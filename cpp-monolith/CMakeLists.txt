@@ -18,12 +18,23 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
-add_subdirectory(external/cpp-logger)
+find_package(ALSA REQUIRED)
 
-add_executable(debate-buddy src/main.cpp)
+add_subdirectory(cpp-logger)
+
+set(SOURCES
+    src/main.cpp
+    src/audio/AudioCapture.cpp
+)
+
+add_executable(debate-buddy ${SOURCES})
 
 target_include_directories(debate-buddy PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${ALSA_INCLUDE_DIRS}
 )
 
-target_link_libraries(debate-buddy PRIVATE Logger nlohmann_json::nlohmann_json)
+target_link_libraries(debate-buddy PRIVATE 
+    Logger
+    ${ALSA_LIBRARIES}
+)

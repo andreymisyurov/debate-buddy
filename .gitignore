@@ -75,3 +75,7 @@ core.*
 
 # Project specific
 plan.md
+
+# Data files
+data/recordings/*.wav
+data/recordings/*.pcm
