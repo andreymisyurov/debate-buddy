@@ -1,0 +1,3 @@
+[submodule "cpp-monolith/cpp-logger"]
+	path = cpp-monolith/cpp-logger
+	url = git@github.com:andreymisyurov/cpp-logger.git
